@@ -24,7 +24,7 @@ const hasError = computed(() => store.state.errorMsg)
 </script>
 
 <template>
-  <navbar/>
+  
   <div class="container mt-5">
     <div class="row">
       <div class="col-12 offset-sm-3 col-sm-6">
