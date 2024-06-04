@@ -1,0 +1,50 @@
+<script setup>
+import { computed } from 'vue';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+
+const router = useRouter();
+const store = useStore();
+
+
+
+
+const logout = () => {
+ store.dispatch('logout',router )
+}
+
+</script>
+
+<template>
+<nav class="navbar navbar-expand-lg bg-body-danger navbar-shadow">
+  <div class="container-fluid">
+    <router-link class="navbar-brand" :to="{name: 'home'}">Poke Api</router-link>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <router-link class="nav-link active" :to="{name: 'home'}">Home</router-link>
+        </li>
+      </ul>
+      <div v-if="isAuthenticated">
+        <router-link  class="btn btn-outline-warning mx-2" :to="{name: 'admin-productos'}">Ir a Panel de Admin </router-link>
+      </div>
+    
+      <button class="btn btn-outline-danger" @click="logout">Cerrar Session</button>
+      <!-- <form class="d-flex" role="search">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form> -->
+    </div>
+  </div>
+</nav>
+</template>
+
+<style scoped>
+.navbar-shadow {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+</style>
